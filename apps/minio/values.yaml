@@ -14,31 +14,31 @@ minio:
     #  kubernetes.io/ingress.class: nginx
     path: /
     hosts:
-      - minio.lab.$DOMAIN
+      - minio.lab.casd.local
     tls:
       - hosts:
-          - minio.lab.$DOMAIN
+          - minio.lab.casd.local
   consoleIngress:
     enabled: true
     #annotations:
     #  kubernetes.io/ingress.class: nginx
     paths: /
     hosts:
-      - minio-console.lab.$DOMAIN
+      - minio-console.lab.casd.local
     tls:
       - hosts:
-          - minio-console.lab.$DOMAIN
+          - minio-console.lab.casd.local
   persistence:
     size: 10Gi
   environment:
-    MINIO_BROWSER_REDIRECT_URL: https://minio-console.lab.$DOMAIN
+    MINIO_BROWSER_REDIRECT_URL: https://minio-console.lab.casd.local
   oidc:
     enabled: true
-    configUrl: "https://auth.lab.$DOMAIN/auth/realms/datalab/.well-known/openid-configuration"
+    configUrl: "https://auth.lab.casd.local/auth/realms/datalab/.well-known/openid-configuration"
     clientId: "minio"
     claimName: "policy"
     scopes: "openid,profile,email"
-    redirectUri: "https://minio-console.lab.$DOMAIN/oauth_callback"
+    redirectUri: "https://minio-console.lab.casd.local/oauth_callback"
     claimPrefix: ""
     comment: ""
     clientSecret: $KEYCLOAK_MINIO_CLIENT_SECRET
